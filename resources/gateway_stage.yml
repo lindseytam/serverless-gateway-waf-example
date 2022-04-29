@@ -1,0 +1,7 @@
+Resources:
+  MyStage:
+    Type: AWS::ApiGateway::Stage
+    Properties:
+      DeploymentId: !Ref __deployment__
+      RestApiId: !Ref ApiGatewayRestApi
+      StageName: mystage

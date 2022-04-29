@@ -1,0 +1,11 @@
+{
+  "name": "serverless",
+  "version": "1.0.0",
+  "description": "Create an API tutorial",
+  "author": "Lindsey Tam",
+  "dependencies": {
+    "serverless-api-gateway-throttling": "^1.2.2",
+    "serverless-associate-waf": "^1.2.1",
+    "serverless-plugin-bind-deployment-id": "^2.0.3"
+  }
+}

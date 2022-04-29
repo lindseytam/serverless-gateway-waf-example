@@ -1,0 +1,27 @@
+service: serverless
+
+provider:
+  name: aws
+  runtime: python3.8
+  region: ${opt:region, "us-east-1"} # set region or use us-east-1 as default
+
+resources:
+  - ${file(./resources/gateway_stage.yml)}
+  - ${file(./resources/waf.yml)}
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http:
+          path: mypath
+          method: get
+
+plugins:
+  - serverless-associate-waf
+  - serverless-plugin-bind-deployment-id
+
+custom:
+  associateWaf:
+    name: WebACLName
+    version: V2

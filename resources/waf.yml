@@ -1,0 +1,40 @@
+Resources:
+  # read the docs at https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-webacl.html
+  # sample WAF from https://github.com/aws-samples/wafv2-json-yaml-samples/blob/master/YAML/webacl-create-001.yaml
+  MyWebACL: 
+    Type: AWS::WAFv2::WebACL
+    Properties:
+      Name: WebACLName
+      Scope: REGIONAL
+      Description: This is a demo web ACL with AWS Managed Rules
+      DefaultAction: 
+        Block: {}
+      VisibilityConfig:
+        SampledRequestsEnabled: true
+        CloudWatchMetricsEnabled: true
+        MetricName: MetricForWebACLWithAMR
+      Tags:
+        - Key: sampleapple
+          Value: sampleorange
+      Rules: 
+        - Name: AWS-AWSManagedRulesCommonRuleSet
+          Priority: 0
+          OverrideAction:
+            None: {}
+          VisibilityConfig:
+            SampledRequestsEnabled: true
+            CloudWatchMetricsEnabled: true
+            MetricName: MetricForAMRCRS
+          Statement:
+            ManagedRuleGroupStatement:
+              VendorName: AWS
+              Name: AWSManagedRulesCommonRuleSet
+              ExcludedRules:
+                - Name: NoUserAgent_HEADER
+
+  # see https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafv2-webaclassociation.html
+  MyWebACLAssociation:
+    Type: AWS::WAFv2::WebACLAssociation
+    Properties: 
+      WebACLArn: !GetAtt MyWebACL.Arn
+      ResourceArn: !Sub arn:aws:apigateway:${aws:region}::/restapis/${ApiGatewayRestApi}/stages/${MyStage}
