@@ -1,5 +1,5 @@
 # Attach a WAF to API Gateway using the Serverless Framework
-This is an example of how you can attach a WAF, or Web ACL, to API Gateway using the Serverless Framework. You can read about this more in depth [here](). 
+This is an example of how you can attach a WAF, or Web ACL, to API Gateway using the Serverless Framework. You can read about this more in depth [here](https://medium.com/@lindseytam/attach-a-waf-to-api-gateway-using-the-serverless-framework-15bd8a55b767). 
 
 For some general background on the Serverless Framework, read my article [here](https://medium.com/@lindseytam/create-an-aws-lambda-function-with-the-serverless-framework-33371011ad5b).
 
