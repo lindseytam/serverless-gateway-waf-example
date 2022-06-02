@@ -15,5 +15,5 @@ This sample utilizes 2 plugins: [serverless-associate-waf](https://www.npmjs.com
 
 
 ## 💻 Deployment
-To deploy your changes, run `sls deploy` in the serverless dir. After it is done deploynig, you should be able to see the resources created in your AWS account.
+To deploy your changes, run `sls deploy` in the serverless dir. After it is done deploying, you should be able to see the resources created in your AWS account.
 
